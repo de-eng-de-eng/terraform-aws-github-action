@@ -1,12 +1,12 @@
 terraform {
-  cloud {
-    organization = "<MY-ORG>"
-    hostname     = "app.terraform.io" # default
+   cloud {
+     organization = "welstory-terraform-study-organization"         # 생성한 ORG 이름 지정
+     hostname     = "app.terraform.io"      # default
 
-    workspaces {
-      name = "terraform-aws-github-action"
-    }
-  }
+     workspaces {
+       name = "terraform-aws-github-action"
+     }
+   }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -31,7 +31,7 @@ resource "aws_vpc" "hashicat" {
 
   tags = {
     name        = "${var.prefix}-vpc-${var.region}"
-    environment = "Production"
+    environment = var.environment
   }
 }
 
