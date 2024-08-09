@@ -6,8 +6,7 @@ on:
       - main
   pull_request:
 
-permissions:
-  contents: write
+permissions: write-all
   
 env:
   MY_PREFIX: DEV
@@ -15,6 +14,7 @@ env:
 
 jobs:
   SCAN:
+    permissions: write-all
     name: SCAN
     runs-on: ubuntu-latest
     # env:
@@ -44,6 +44,7 @@ jobs:
         with:
           sarif_file: terrascan.sarif  
   Terraform:
+    permissions: write-all
     needs: SCAN
     name: Terraform
     runs-on: ubuntu-latest
